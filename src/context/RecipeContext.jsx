@@ -4,12 +4,7 @@ export const recipe_context = createContext(null);
 
 const RecipeContext = (props) => {
     // console.log(props);
-    const [Recipes, setRecipes] = useState([{
-        id: 1,
-        title: "Something",
-        ingredients: "asdf, asdf",
-        instructions: "The quick brown fox jumps over a lazy dog."
-    }]);
+    const [Recipes, setRecipes] = useState([]);
     // console.log(Recipes);
     
 return (

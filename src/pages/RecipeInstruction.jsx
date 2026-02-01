@@ -16,8 +16,9 @@ const RecipeInstruction = () => {
             <p><span className='font-bold text-xl'>Start by: </span>{recipe.instructions}</p>
 
 
-            <div className='buttons absolute flex items-center justify-between bottom-10 w-[90%]'>
+            <div className='buttons absolute flex items-center justify-around bottom-10 w-[90%]'>
                 <button onClick={() => navigate('/recipe')} className='px-5 py-3 bg-violet-500 rounded-2xl mt-6 cursor-pointer active:scale-95'>Close</button>
+                <button onClick={() => navigate(`/recipe/settings/${recipe.id}`)} className='px-5 py-3 bg-violet-500 rounded-2xl mt-6 cursor-pointer active:scale-95'>Settings</button>
 
                 <div className='extra flex items-center gap-3 justify-between'>
                     <button className='cursor-pointer text-xl font-thin hover:text-rose-400'>Like</button>
