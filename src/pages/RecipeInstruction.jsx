@@ -1,13 +1,27 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom'
 import { recipe_context } from '../context/RecipeContext';
 
 const RecipeInstruction = () => {
     const navigate = useNavigate();
-    const { Recipes } = useContext(recipe_context);
+    const { Recipes, setRecipes } = useContext(recipe_context);
     const params = useParams();
 
     const recipe = Recipes.find((recipe) => params.id == recipe.id);
+
+    const toggleLike = (recipeID) => {
+        setRecipes((prevRecipes) => 
+            prevRecipes.map((recipe) => {
+                if(recipe.id === recipeID) {
+                    return { ...recipe, isFavourite: !recipe.isFavourite }
+                }
+                return recipe;
+            })
+        )
+    }
+    useEffect(() => {
+        localStorage.setItem("recipe_list", JSON.stringify(Recipes))
+    }, [Recipes])
 
     return (
         <div key={recipe.id} className='instruction-window bg-[#180b6bb9] backdrop-blur-2xl px-10 py-10 rounded-2xl border-[#6e58fd] border-2 drop-shadow-2xl  w-[80%] h-[70%] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10'>
@@ -24,7 +38,9 @@ const RecipeInstruction = () => {
                 </div>
 
                 <div className='extra2'>
-                    <button className='cursor-pointer text-xl bg-sky-600 px-5 py-3 rounded-2xl font-thin hover:text-black'>Like</button>
+                    <button
+                        onClick={() => toggleLike(recipe.id)}
+                        className='cursor-pointer text-xl bg-sky-600 px-5 py-3 rounded-2xl font-thin hover:text-black'>{recipe.isFavourite ? "Liked" : "Like"}</button>
                 </div>
             </div>
         </div>

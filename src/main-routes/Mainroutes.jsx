@@ -4,6 +4,7 @@ import Recipe from '../pages/Recipe'
 import CreateRecipe from '../pages/CreateRecipe'
 import RecipeInstruction from '../pages/RecipeInstruction'
 import RecipeSettings from '../pages/RecipeSettings'
+import LikedRecipes from '../pages/LikedRecipes'
 
 const Mainroutes = () => {
     return (
@@ -15,6 +16,7 @@ const Mainroutes = () => {
                 </Route>
                 <Route path='/recipe/settings/:id' element={<RecipeSettings />} />
                 <Route path='/create-recipe' element={<CreateRecipe />} />
+                <Route path='/liked-recipes' element={<LikedRecipes />} />
             </Routes>
         </div>
     )
