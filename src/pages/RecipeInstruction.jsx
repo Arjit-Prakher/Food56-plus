@@ -16,13 +16,15 @@ const RecipeInstruction = () => {
             <p><span className='font-bold text-xl'>Start by: </span>{recipe.instructions}</p>
 
 
-            <div className='buttons absolute flex items-center justify-around bottom-10 w-[90%]'>
-                <button onClick={() => navigate('/recipe')} className='px-5 py-3 bg-violet-500 rounded-2xl mt-6 cursor-pointer active:scale-95'>Close</button>
-                <button onClick={() => navigate(`/recipe/settings/${recipe.id}`)} className='px-5 py-3 bg-violet-500 rounded-2xl mt-6 cursor-pointer active:scale-95'>Settings</button>
+            <div className='buttons absolute px-5 flex items-center justify-between bottom-10 w-[90%]'>
+                <div className='extra1 flex items-center gap-3 justify-between'>
 
-                <div className='extra flex items-center gap-3 justify-between'>
-                    <button className='cursor-pointer text-xl font-thin hover:text-rose-400'>Like</button>
-                    <button className='cursor-pointer text-xl font-thin hover:text-rose-400'>Save</button>
+                    <button onClick={() => navigate('/recipe')} className='px-5 py-3 bg-rose-800 rounded-2xl cursor-pointer active:scale-95'>Close</button>
+                    <button onClick={() => navigate(`/recipe/settings/${recipe.id}`)} className='px-5 py-3 bg-violet-500 rounded-2xl cursor-pointer active:scale-95'>Settings</button>
+                </div>
+
+                <div className='extra2'>
+                    <button className='cursor-pointer text-xl bg-sky-600 px-5 py-3 rounded-2xl font-thin hover:text-black'>Like</button>
                 </div>
             </div>
         </div>
