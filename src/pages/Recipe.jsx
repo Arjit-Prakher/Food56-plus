@@ -6,10 +6,10 @@ import { recipe_context } from "../context/RecipeContext";
 const Recipe = () => {
 
     const { Recipes } = useContext(recipe_context);
-    // console.log(Recipes);
     const renderRecipes = Recipes.map((recipe) => (
         <RecipeCard key={recipe.id} recipeDetails={recipe}/>
     ))
+
     
     return (
         <>

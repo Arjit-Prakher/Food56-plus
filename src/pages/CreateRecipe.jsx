@@ -1,5 +1,5 @@
 import { nanoid } from "nanoid";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { useForm } from "react-hook-form"
 import { recipe_context } from "../context/RecipeContext";
 
@@ -12,6 +12,10 @@ const CreateRecipe = () => {
         setRecipes([...Recipes, newdata])
         reset();
     };
+
+    useEffect(() => {
+        localStorage.setItem("recipe_list", JSON.stringify(Recipes))
+    }, [Recipes])
     
 
 

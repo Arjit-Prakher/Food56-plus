@@ -4,7 +4,10 @@ export const recipe_context = createContext(null);
 
 const RecipeContext = (props) => {
     // console.log(props);
-    const [Recipes, setRecipes] = useState([]);
+    const [Recipes, setRecipes] = useState(() => {
+        const savedRecipes = localStorage.getItem("recipe_list");
+        return savedRecipes ? JSON.parse(savedRecipes) : []
+    });
     // console.log(Recipes);
     
 return (

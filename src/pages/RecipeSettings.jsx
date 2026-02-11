@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { useForm } from 'react-hook-form';
 import { recipe_context } from '../context/RecipeContext';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -11,11 +11,11 @@ const RecipeSettings = () => {
 
     // To display data in the form.
     const recipeToList = Recipes.find((recipe) => params.id == recipe.id);
-    // console.log(recipeToList);
-
     const { register, handleSubmit } = useForm({
         values: recipeToList
     });
+
+
     const onUpdate = (newdata) => {
         // console.log(newdata);
         // Find and replace
@@ -27,13 +27,15 @@ const RecipeSettings = () => {
     };
     const deleteHandler= () => {
         if(confirm("Delete this recipe?")) {
-
             setRecipes(
                 Recipes.filter((recipe) => recipe.id !== params.id)
             )
         }
         navigate('/recipe')
     }
+    useEffect(() => {
+            localStorage.setItem("recipe_list", JSON.stringify(Recipes))
+        }, [Recipes])
     // console.log(Recipes);
     return (
         <div>
